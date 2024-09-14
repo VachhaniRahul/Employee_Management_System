@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Filter Employee{% endblock title %}
+
+{% block body %}
+<div class="container my-4">
+    <h1 class="mb-4 text-center">Filter Employees</h1>
+
+    <form action="/filter_emp/" method="post" class="text-center">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label for="name" class="form-label">First Name / Last Name</label>
+            <input type="text" class="form-control" name="name" id="name" placeholder="Enter first or last name">
+        </div>
+
+        <div class="mb-3">
+            <label for="dept" class="form-label">Department Name</label>
+            <input type="text" class="form-control" name="dept" id="dept" placeholder="Enter department name">
+        </div>
+
+        <div class="mb-3">
+            <label for="role" class="form-label">Role</label>
+            <input type="text" class="form-control" name="role" id="role" placeholder="Enter role">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock body %}

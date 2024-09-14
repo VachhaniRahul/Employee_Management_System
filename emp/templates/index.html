@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Office Employee Management{% endblock title %}
+
+{% block body %}
+<div class="container my-5">
+    <h1 class="text-center mb-4">Office Employee Management System</h1>
+    
+    <div class="row justify-content-center">
+        <!-- View All Employees Button -->
+        <div class="col-md-3">
+            <a class="btn btn-outline-primary btn-lg d-block mb-3" href="/all_emp">
+                View All Employees
+            </a>
+        </div>
+
+        <!-- Add Employee Button -->
+        <div class="col-md-3">
+            <a class="btn btn-outline-success btn-lg d-block mb-3" href="/add_emp">
+                Add An Employee
+            </a>
+        </div>
+
+        <!-- Remove Employee Button -->
+        <div class="col-md-3">
+            <a class="btn btn-outline-danger btn-lg d-block mb-3" href="/remove_emp">
+                Remove An Employee
+            </a>
+        </div>
+
+        <!-- Filter Employee Details Button -->
+        <div class="col-md-3">
+            <a class="btn btn-outline-info btn-lg d-block mb-3" href="/filter_emp">
+                Filter Employee Details
+            </a>
+        </div>
+    </div>
+
+    <div class="text-center mt-5">
+        <p class="lead">Efficiently manage your organization’s workforce with this simple and intuitive system.</p>
+        <p class="text-muted">Use the above options to view, add, remove, or filter employees' details.</p>
+    </div>
+</div>
+{% endblock body %}
