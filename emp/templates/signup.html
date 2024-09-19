@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        /* General styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h3 {
+            text-align: center;
+            color: #333;
+        }
+
+        /* Form container */
+        .form-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            margin: auto;
+        }
+
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        /* Alert styling */
+        .alert {
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            color: #721c24;
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+        }
+
+        .alert .close {
+            background: none;
+            border: none;
+            font-size: 16px;
+            float: right;
+            cursor: pointer;
+        }
+
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+            border-color: #c3e6cb;
+        }
+
+        .alert-info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border-color: #bee5eb;
+        }
+
+        .alert-warning {
+            background-color: #fff3cd;
+            color: #856404;
+            border-color: #ffeeba;
+        }
+    </style>
+</head>
+
+<body>
+
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+        <b>Message:</b> {{ message }}
+        <button type="button" class="close" aria-label="Close" onclick="this.parentElement.style.display='none';">
+            &times;
+        </button>
+    </div>
+    {% endfor %}
+
+    <div class="form-container">
+        <h3>Sign Up</h3>
+
+        <form action="/signup/" method="post">
+            {% csrf_token %}
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" placeholder="Create a username (letters and numbers only)" required>
+
+            <label for="email">Email Address</label>
+            <input type="email" name="email" id="email" placeholder="Enter your email address" required>
+
+            <label for="pass1">Password</label>
+            <input type="password" name="pass1" id="pass1" placeholder="Enter your password" required>
+
+            <label for="pass2">Confirm Password</label>
+            <input type="password" name="pass2" id="pass2" placeholder="Confirm your password" required>
+
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+
+</body>
+
+</html>

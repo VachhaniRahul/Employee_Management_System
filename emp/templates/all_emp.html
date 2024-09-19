@@ -7,6 +7,15 @@
 
 <div class="container">
     <h1 class="my-4 text-center">Employee Directory</h1>
+
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+        <b>Message:</b> {{ message }}
+        <button type="button" class="close" aria-label="Close" onclick="this.parentElement.style.display='none';">
+            &times;
+        </button>
+    </div>
+    {% endfor %}
     
     <!-- Table with Employee Data -->
     <div class="table-responsive">
@@ -21,6 +30,7 @@
                     <th scope="col">Role</th>
                     <th scope="col">Phone</th>
                     <th scope="col">Hire Date</th>
+                    <th scope="col">Update</th>
                 </tr>
             </thead>
             <tbody>
@@ -34,6 +44,9 @@
                     <td>{{ emp.role.name }}</td>
                     <td>{{ emp.phone }}</td>
                     <td>{{ emp.hire_date }}</td>
+                    <td>
+                           <a href="{% url "update_emp" id=emp.id %}"><button type="submit" class="btn btn-primary">Update</button></a> 
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>

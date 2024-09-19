@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}Update Employee{% endblock title %}
+
+{% block body %}
+<div class="container my-4">
+    <h2 class="text-center mb-4">Update Employee Information</h2>
+
+    <form action="{% url 'update_emp' id=emp.id %}" method="post" class="shadow p-4 rounded bg-light">
+        {% csrf_token %}
+
+        {% if emp %}
+        <!-- Use Bootstrap grid for compact and organized form layout -->
+        <div class="row g-3">
+            <!-- First Name -->
+            <div class="col-md-6">
+                <label for="first_name" class="form-label">First Name</label>
+                <input type="text" class="form-control form-control-sm" name="first_name" id="first_name" value="{{ emp.first_name }}" required>
+            </div>
+
+            <!-- Last Name -->
+            <div class="col-md-6">
+                <label for="last_name" class="form-label">Last Name</label>
+                <input type="text" class="form-control form-control-sm" name="last_name" id="last_name" value="{{ emp.last_name }}" required>
+            </div>
+        </div>
+
+        <div class="row g-3 mt-2">
+            <!-- Salary -->
+            <div class="col-md-6">
+                <label for="salary" class="form-label">Salary</label>
+                <input type="number" class="form-control form-control-sm" name="salary" id="salary" value="{{ emp.salary }}" min="0" required>
+            </div>
+
+            <!-- Bonus -->
+            <div class="col-md-6">
+                <label for="bonus" class="form-label">Bonus</label>
+                <input type="number" class="form-control form-control-sm" name="bonus" id="bonus" value="{{ emp.bonus }}" min="0">
+            </div>
+        </div>
+
+        <div class="row g-3 mt-2">
+            <!-- Phone -->
+            <div class="col-md-6">
+                <label for="phone" class="form-label">Phone</label>
+                <input type="tel" class="form-control form-control-sm" name="phone" id="phone" value="{{ emp.phone }}" required>
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
+            <button type="submit" class="btn btn-primary btn-sm px-4 py-1">Update</button>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
+            <a href="{% url "all_emp" %}" class="btn btn-secondary btn-sm px-4 py-1">Back</a>
+        </div>
+        {% endif %}
+    </form>
+</div>
+{% endblock body %}
