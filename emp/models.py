@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import time
 
 # Create your models here.
 
@@ -25,7 +26,10 @@ class Employee(models.Model):
     bonus = models.IntegerField(default=0)
     role = models.ForeignKey(Role, on_delete=models.CASCADE)
     phone = models.IntegerField(default=0)
-    hire_date = models.DateField()
+    hire_date = models.DateField(auto_now_add=True)  # Automatically sets to the date when created
+    date = models.TimeField(auto_now_add=True)
+      # Automatically sets to the time when created
+
 
     def __str__(self):
         return"%s %s %s" %(self.first_name, self.last_name, self.dept)
